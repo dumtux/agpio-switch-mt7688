@@ -76,7 +76,7 @@ static void __exit agpio_exit(void)
 module_init(agpio_init);
 module_exit(agpio_exit);
 
-MODULE_AUTHOR("David Kitschker");
+MODULE_AUTHOR("David Kitschker, Hotte S.");
 MODULE_DESCRIPTION("Modify MT7688 AGPIO_CFG register to enable 5 port PHY");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:" DRV_NAME);
