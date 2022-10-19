@@ -43,9 +43,9 @@ static int checkID(void){
 static int __init agpio_init(void)
 {
     //Map CPU IO registers
-    CHIPID0_3 = (mt7688_t)ioremap_nocache(CHIPID0_3_LOC, 4);
-    CHIPID4_7 = (mt7688_t)ioremap_nocache(CHIPID4_7_LOC, 4);
-    AGPIO_CFG = (mt7688_t)ioremap_nocache(AGPIO_CFG_LOC, 4);
+    CHIPID0_3 = (mt7688_t)ioremap(CHIPID0_3_LOC, 4);
+    CHIPID4_7 = (mt7688_t)ioremap(CHIPID4_7_LOC, 4);
+    AGPIO_CFG = (mt7688_t)ioremap(AGPIO_CFG_LOC, 4);
     
     if(checkID()){
         printk("AGPIOSwitch: Switching MT7688 to 5 port ethernet mode...\n");
