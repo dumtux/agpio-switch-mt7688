@@ -11,7 +11,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- */    
+ */
 
 #include <linux/module.h>
 #include <linux/version.h>
@@ -46,10 +46,10 @@ static int __init agpio_init(void)
     CHIPID0_3 = (mt7688_t)ioremap(CHIPID0_3_LOC, 4);
     CHIPID4_7 = (mt7688_t)ioremap(CHIPID4_7_LOC, 4);
     AGPIO_CFG = (mt7688_t)ioremap(AGPIO_CFG_LOC, 4);
-    
+
     if(checkID()){
         printk("AGPIOSwitch: Switching MT7688 to 5 port ethernet mode...\n");
-        
+
         storedAGPIO_CFG = *AGPIO_CFG;
         *AGPIO_CFG &= ~(0xF << 17); //Clear the EPHY_GPIO_AIO_EN bits of the CFG register to enable analog PHY mode
     }
@@ -69,7 +69,7 @@ static void __exit agpio_exit(void)
     iounmap(CHIPID0_3);
     iounmap(CHIPID4_7);
     iounmap(AGPIO_CFG);
-    
+
     printk("AGPIOSwitch: module unloaded\n");
 }
 
@@ -79,4 +79,4 @@ module_exit(agpio_exit);
 MODULE_AUTHOR("David Kitschker");
 MODULE_DESCRIPTION("Modify MT7688 AGPIO_CFG register to enable 5 port PHY");
 MODULE_LICENSE("GPL");
-MODULE_ALIAS("platform:" DRV_NAME); 
+MODULE_ALIAS("platform:" DRV_NAME);
