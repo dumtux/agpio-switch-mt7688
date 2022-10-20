@@ -1,4 +1,4 @@
-# Kernel Module forenabling MT7688 Ethernet Switch
+# Kernel Module fore nabling MT7688 Ethernet Switch
 
 MT7688, an SoC used in routers and Omega2, has 5-ports Ethernet switch.
 On Onion's Omega2(S) or Omega2(S)+ modules, this is disabled by default.
