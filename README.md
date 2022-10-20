@@ -3,9 +3,11 @@
 MT7688, an SoC used in routers and Omega2, has 5-ports Ethernet switch.
 On Onion's Omega2(S) or Omega2(S)+ modules, this is disabled by default.
 
-This module enables the Ethernet switch by modifying `AGPIO_CFG` resistor value.
+This module enables
+* the Ethernet switch by modifying `AGPIO_CFG` resistor value.
+* LEDs for each port by modifying `GPIO2_CFG` resistor value.
 
-* Tested on OpenWrt 22.03, with kernel version 5.10
+Tested on OpenWrt 22.03, with kernel version 5.10
 
 ## Usage
 
