@@ -1,4 +1,4 @@
-# Kernel Module for modifying MT7688 AGPIO_CFG register
+# Kernel Module forenabling MT7688 Ethernet Switch
 
 MT7688, an SoC used in routers and Omega2, has 5-ports Ethernet switch.
 On Onion's Omega2(S) or Omega2(S)+ modules, this is disabled by default.
@@ -9,7 +9,16 @@ This module enables
 
 Tested on OpenWrt 22.03, with kernel version 5.10
 
+<img src="https://github.com/hotteshen/agpio-switch-mt7688/blob/develop/doc/omega2-usage-example.png?raw=true" style="width: 80%">
+
+
 ## Usage
+
+### Use a custom package collection.
+
+[TowerWrt Packages (OpenWrt Custom Packages Collection)](https://github.com/hotteshen/towerwrt-packages)
+
+### (alternative way) Hard-copying
 
 * Clone this into your customizing OpenWRT root, e.g. into `/package/somewhere/agpioSwitch`
 * comment out `sdhci` and `pwm` sections in device tree, as those pins are occupying Ethernet ports 2 and 3.
