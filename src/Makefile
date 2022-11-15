@@ -1,1 +1,1 @@
-obj-${CONFIG_AGPIO}	+= agpioSwitch.o 
+obj-${CONFIG_AGPIO}	+= mt7688-agpio-switch.o 
