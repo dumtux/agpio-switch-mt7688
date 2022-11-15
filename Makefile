@@ -6,36 +6,38 @@
 #
 
 include $(TOPDIR)/rules.mk
-include $(INCLUDE_DIR)/kernel.mk
 
-PKG_NAME:=mt7688-agpio-switch
-PKG_VERSION:=1.0
+PKG_NAME:=python-pyserial-asyncio
+PKG_VERSION:=0.6
+PKG_RELEASE:=1
 
+PYPI_NAME:=pyserial-asyncio
+PKG_HASH:=409f32a35a3b530e6b2224e2a5b367da
+
+
+PKG_LICENSE:=BSD
+PKG_MAINTAINER:=DumTux <tekobase@outlook.com>
+
+include ../pypi.mk
 include $(INCLUDE_DIR)/package.mk
+include ../python3-package.mk
 
-
-MAKE_OPTS:=$(KERNEL_MAKE_FLAGS) \
-  SUBDIRS="$(PKG_BUILD_DIR)" \
-    M="$(PKG_BUILD_DIR)" \
-  EXTRA_CFLAGS="$(EXTRA_CFLAGS)" \
-  CONFIG_AGPIO=m
-
-define KernelPackage/agpioSwitch
-  SECTION:=kernel
+define Package/python3-pyserial-asyncio
+  SECTION:=lang-python
   CATEGORY:=TowerSoftware
-  SUBMENU:=Kernel modules
-  TITLE:=Switch AGPIO_CFG to enable 5 port ethernet on MT7688
-  FILES:=$(PKG_BUILD_DIR)/agpioSwitch.ko
-  AUTOLOAD:=$(call AutoLoad,81,agpioSwitch) 
+  SUBMENU:=Python packages
+  TITLE:=python3-pyserial-asyncio
+  URL:=https://github.com/pyserial/pyserial-asyncio
+  DEPENDS:=+python3-light +python3-pyserial
 endef
 
-define Build/Prepare
-  mkdir -p $(PKG_BUILD_DIR)/
-  $(CP) -R ./src/* $(PKG_BUILD_DIR)/
+define Package/python3-pyserial-asyncio/description
+Async I/O extension for the Python Serial Port package for OSX, Linux, BSD.
+Support for Windows is included, though with a different implementation based on polling
+which may be slower than on other platforms.
+
+
 endef
 
-define Build/Compile
-$(MAKE) -C "$(LINUX_DIR)" $(MAKE_OPTS) modules
-endef
-
-$(eval $(call KernelPackage,agpioSwitch)) 
+$(eval $(call Py3Package,python3-pyserial-asyncio))
+$(eval $(call BuildPackage,python3-pyserial-asyncio))
